@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {    
     configureFrame({ limit: 10, offset: 0, tableName: 'USER GOALS'});
-    console.log('sync');
+    // console.log('sync');
     sync();
   }, []);
 
@@ -27,24 +27,24 @@ const Home = () => {
     padding: 6
   };
 
-  const handleSelectGoalClick = (ele) => {
-    if (isUserSignedIn()) {
-      addRecord({ tableName: "USER GOALS", newRecord: {
-        id: ele.id,
-        goal: ele.goal,
-        type: ele.type
-      } })
-    }
-  };
+  // const handleSelectGoalClick = (ele) => {
+  //   if (isUserSignedIn()) {
+  //     addRecord({ tableName: "USER GOALS", newRecord: {
+  //       id: ele.id,
+  //       goal: ele.goal,
+  //       type: ele.type
+  //     } })
+  //   }
+  // };
 
-  console.log(Frame());
-  console.log(currentConfiguration().tableName);
+  // console.log(Frame());
+  // console.log(currentConfiguration().tableName);
 
   return (
     <div style={ { display: 'flex', justifyContent: 'center' } }>
       <div style={ { width: '400px' } }>
-        {currentConfiguration().tableName === 'USER GOALS' &&         
-        Frame().map((ele, index) =>
+        {/* {currentConfiguration().tableName === 'USER GOALS' &&          */}
+        {Frame().map((ele, index) =>
           <div style={card} key={index}>
             <h4>{ele.type}</h4>
             <p>{ele.goal}</p>

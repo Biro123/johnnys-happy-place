@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Based on this example: https://www.freecodecamp.org/news/how-to-add-a-serverless-database-to-react-projects-and-web-apps/
+
+Using easybase and deployed with heroku.
+
+## To deploy a new version
+git push heroku master
+heroku open
+
+more info here: https://github.com/mars/create-react-app-buildpack#usage
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,11 +1,15 @@
 import { EasybaseProvider } from 'easybase-react';
 import { BrowserRouter, HashRouter, Switch, Route, Link } from 'react-router-dom';
-import ebconfig from './ebconfig';
 
 import './App.css';
 import Home from './components/Home';
 import AuthButton from './components/AuthButton';
 import Goals from './components/Goals';
+
+const ebconfig = {
+  "integration": process.env.REACT_APP_EBCONFIG_INTEGRATION,
+  "version": process.env.REACT_APP_EBCONFIG_VERSION
+}
 
 function App() {
   return (
