@@ -1,21 +1,27 @@
-import { EasybaseProvider, useEasybase } from 'easybase-react';
-import { useEffect } from "react";
-import { HashRouter, Switch, Route, Link } from 'react-router-dom';
+import { useEasybase } from 'easybase-react';
+import { useEffect, useState } from "react";
 
 const Goals = () => {
+
+  const [ allGoals, setAllGoals ] = useState([]);
 
   const {
     configureFrame,
     sync,
     Frame,
     isUserSignedIn,
-    addRecord
+    addRecord,
+    useFrameEffect
   } = useEasybase();
 
   useEffect(() => {
     configureFrame({ limit: 10, offset: 0, tableName: 'GOALS'});
     sync();
   }, []);
+
+  useFrameEffect(() => {
+    setAllGoals(Frame().map(ele => ele));
+  });
 
   const card = {
     border: "2px #0af solid",
@@ -38,7 +44,7 @@ const Goals = () => {
   return (
     <div style={ { display: 'flex', justifyContent: 'center' } }>
       <div style={ { width: '400px' } }>
-        {Frame().map((ele, index) =>
+        {allGoals.map((ele, index) =>
           <div style={card} key={index}>
             <h4>{ele.type}</h4>
             <p>{ele.goal}</p>
