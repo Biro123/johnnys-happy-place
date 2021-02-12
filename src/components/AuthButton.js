@@ -79,6 +79,7 @@ const AuthButton = () => {
   const onSignInClick = async () => {
     console.log('signin clicked');
     const res = await signIn(usernameValue, passwordValue);
+    console.log('signin resp');
     console.log(res);
     if (res.success) {
       setDialogOpen(false);
