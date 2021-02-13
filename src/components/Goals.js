@@ -3,8 +3,6 @@ import { useEffect } from "react";
 
 const Goals = () => {
 
-  const [ allGoals, setAllGoals ] = useState([]);
-
   const {
     configureFrame,
     sync,
@@ -18,10 +16,6 @@ const Goals = () => {
     configureFrame({ limit: 10, offset: 0, tableName: 'GOALS'});
     sync();    
   }, []);
-
-  useFrameEffect(() => {
-    setAllGoals(Frame().map(ele => ele));
-  });
 
   const card = {
     border: "2px #0af solid",
@@ -44,7 +38,7 @@ const Goals = () => {
   return (
     <div style={ { display: 'flex', justifyContent: 'center' } }>
       <div style={ { width: '400px' } }>
-        {allGoals.map((ele, index) =>
+        {Frame().map((ele, index) =>
           <div style={card} key={index}>
             <h4>{ele.type}</h4>
             <p>{ele.goal}</p>
