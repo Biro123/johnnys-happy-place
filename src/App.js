@@ -1,5 +1,5 @@
 import { EasybaseProvider } from 'easybase-react';
-import { BrowserRouter, HashRouter, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 
 import './App.css';
 import Home from './components/Home';
@@ -14,7 +14,7 @@ const ebconfig = {
 function App() {
   return (
     <EasybaseProvider ebconfig={ebconfig}>
-      <BrowserRouter>
+      <HashRouter>
         <div style={ { display: "flex", justifyContent: "space-evenly", borderBottom: "1px grey solid" } }>
           <Link to="/"><h2>Home</h2></Link>
           <Link to="/goals"><h2>Goals</h2></Link>
@@ -28,7 +28,7 @@ function App() {
             <Goals />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </EasybaseProvider>
   );
 }
