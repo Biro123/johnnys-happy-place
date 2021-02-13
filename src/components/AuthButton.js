@@ -61,7 +61,8 @@ const AuthButton = () => {
     isUserSignedIn,
     signIn,
     signOut,
-    signUp
+    signUp,
+    sync
   } = useEasybase();
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -77,25 +78,24 @@ const AuthButton = () => {
   }
 
   const onSignInClick = async () => {
-    console.log('signin clicked');
     const res = await signIn(usernameValue, passwordValue);
-    console.log(res);
     if (res.success) {
       setDialogOpen(false);
       setUsernameValue('');
       setPasswordValue('');
+      sync();
     }
   }
 
   const onSignUpClick = async () => {
-    console.log('signup clicked');
-    const res = await signUp(usernameValue, passwordValue);
-    console.log(res);
+    const res = await signUp(usernameValue, passwordValue);    
     if (res.success) {
       await signIn(usernameValue, passwordValue);
       setDialogOpen('');
       setUsernameValue('');
       setPasswordValue('');
+    } else {
+      console.error(res.message);
     }
   }
 

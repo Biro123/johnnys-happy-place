@@ -1,6 +1,5 @@
-import { EasybaseProvider, useEasybase } from 'easybase-react';
+import { useEasybase } from 'easybase-react';
 import { useEffect } from "react";
-import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 
 const Goals = () => {
 
@@ -9,12 +8,13 @@ const Goals = () => {
     sync,
     Frame,
     isUserSignedIn,
-    addRecord
+    addRecord,
+    useFrameEffect
   } = useEasybase();
 
   useEffect(() => {
     configureFrame({ limit: 10, offset: 0, tableName: 'GOALS'});
-    sync();
+    sync();    
   }, []);
 
   const card = {
